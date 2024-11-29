@@ -218,8 +218,8 @@ app.get('/api/classes', async (req, res, next) => {
 
 
 
-app.delete('/api/student',async(req,res,next) => {
-    const {id} =req.body;
+app.delete('/api/student/:id',async(req,res,next) => {
+    const {id} =req.params;
     try{
      const result = await db.query('DELETE FROM students WHERE id=$1 RETURNING *',[id]);
      if(result.rowCount===0){
@@ -233,8 +233,8 @@ app.delete('/api/student',async(req,res,next) => {
     }
   });
 
-  app.delete('/api/teachers',async(req,res,next) => {
-    const {id} =req.body;
+  app.delete('/api/teachers/:id',async(req,res,next) => {
+    const {id} =req.params;
     try{
      const result = await db.query('DELETE FROM teachers WHERE id=$1 RETURNING *',[id]);
      if(result.rowCount===0){

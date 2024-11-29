@@ -57,7 +57,7 @@ const Updatedetails = () => {
       const response = await axios.put(`/api/student/${id}`, student);
       if (response.data.success) {
         alert("Student details updated successfully!");
-        navigate(`/student/${id}`); // Redirect to view page
+        navigate("/"); 
       } else {
         alert("Failed to update student details.");
       }
@@ -67,22 +67,18 @@ const Updatedetails = () => {
     }
   };
 
-
   const handleDelete = async () => {
     try {
       const response = await axios.delete(`/api/student/${id}`);
-      if (response.data.success) {
-        alert("Student deleted successfully!");
-        navigate("/students");  // Redirect to a list of students or another appropriate page
-      } else {
-        setError("Failed to delete student.");
-      }
-    } catch (err) {
-      setError("Error deleting student.");
-      console.error(err);
+      console.log('Delete response:', response.data);
+      alert('Student deleted successfully!');
+      navigate("/");
+    } catch (error) {
+      console.error('Error deleting student:', error.response?.data || error.message);
+      alert(`Failed to delete student: ${error.response?.data?.error || error.message}`);
     }
   };
-
+  
   if (loading) return <p className="text-center text-white">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
