@@ -16,7 +16,7 @@ const Addteacher = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch subjects to populate the dropdown
+   
     axios.get('/api/subjects')
       .then((response) => setSubjects(response.data))
       .catch((error) => console.error('Error fetching subjects:', error));

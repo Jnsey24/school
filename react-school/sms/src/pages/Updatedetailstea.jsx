@@ -110,7 +110,7 @@ const Updatedetailstea = () => {
       });
       if (response.data.success) {
         alert("Teacher details updated successfully!");
-        navigate(`/teachers/${id}`);
+        navigate('/');
       } else {
         alert("Failed to update teacher details.");
       }
@@ -123,15 +123,12 @@ const Updatedetailstea = () => {
   const handleDeleteTeacher = async () => {
     try {
       const response = await axios.delete(`/api/teachers/${id}`);
-      if (response.data.success) {
-        alert("Teacher deleted successfully!");
-        navigate('/teachers');
-      } else {
-        alert("Failed to delete teacher.");
-      }
-    } catch (err) {
-      console.error("Error deleting teacher:", err);
-      alert("An error occurred while deleting.");
+      console.log('Delete response:', response.data);
+      alert('teacher deleted successfully!');
+      navigate("/");
+    } catch (error) {
+      console.error('Error deleting teacher:', error.response?.data || error.message);
+      alert(`Failed to delete teacher: ${error.response?.data?.error || error.message}`);
     }
   };
 

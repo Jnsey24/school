@@ -28,7 +28,7 @@ const Addstudent = () => {
       const response = await axios.post('/api/students', formData);
       console.log(response.data.message);
       alert('Registration successful');
-      navigate('/login'); // Redirect to login page or any other page
+      navigate('/'); // Redirect to login page or any other page
     } catch (error) {
       console.error('Error during registration:', error);
       alert('Registration failed');
