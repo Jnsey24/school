@@ -64,8 +64,8 @@ app.get('/api/searchstudent', async (req, res) => {
   const { name } = req.query; // Retrieve the `name` query parameter
   try {
     const results = await db.query(
-      "SELECT * FROM students WHERE LOWER(name) LIKE $1", // Use $1 for the first parameter
-      [`${name}%`] // Search for names starting with the provided query
+      "SELECT * FROM students WHERE LOWER(name) LIKE $1",
+      [`${name}%`]
     );
     res.json(results.rows); // Return the rows from the query result
   } catch (error) {
